@@ -1,0 +1,29 @@
+extends layout
+
+block contenido
+  h1= title
+
+  // Formulario para agregar proyectos
+  form(action="/agregar-proyecto", method="POST", enctype="application/x-www-form-urlencoded")
+    label(for="nombre") Nombre del Proyecto:
+    input(type="text", name="nombre", required)
+    br
+    br
+    label(for="descripcion") Descripción del Proyecto:
+    input(type="text", name="descripcion", required)
+    br
+    br
+    button(type="submit") Agregar Proyecto
+    br
+    br
+
+  // Mostrar la lista de proyectos en una tabla
+  if proyectos.length > 0
+    table
+      tr
+        th Nombre
+        th Descripción
+      each proyecto in proyectos
+        tr
+          td= proyecto.nombre
+          td= proyecto.descripcion
